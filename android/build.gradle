@@ -5,17 +5,27 @@ buildscript {
         compileSdkVersion = 35
         targetSdkVersion = 35
         ndkVersion = "27.1.12297006"
-        kotlinVersion = "2.0.21"
+        kotlinVersion = "2.0.21" // Make sure this version is compatible with your other dependencies
     }
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle")
-        classpath("com.facebook.react:react-native-gradle-plugin")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        classpath('com.android.tools.build:gradle') // Make sure to specify the version
+        classpath("com.facebook.react:react-native-gradle-plugin") 
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion") // Dynamically using the kotlinVersion
     }
 }
 
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Include this if it's necessary for legacy dependencies
+        maven { url "https://jitpack.io" }
+    }
+}
+
+// Make sure to apply the React Native plugin for the root project
 apply plugin: "com.facebook.react.rootproject"
