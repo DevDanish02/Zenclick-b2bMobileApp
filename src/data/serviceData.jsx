@@ -90,7 +90,7 @@ export const bankingData = [
     },
     {
       icon: color => (
-        <FontAwesome5 name="file-invoice-dollar" size={30} color={color} />
+        <FontAwesome5 name="file-alt" size={30} color={color} />
       ),
       title: 'Bank Statement',
       screen: 'BankSatement',
@@ -102,7 +102,7 @@ export const paymentData = [
   [
     {
       icon: color => (
-        <FontAwesome5 name="hand-holding-usd" size={30} color={color} />
+        <FontAwesome5 name="hand-holding" size={30} color={color} />
       ),
       title: 'UPI Collect',
       screen: 'UPICollect',
@@ -194,7 +194,7 @@ export const aadharData = [
     },
     {
       icon: color => (
-        <FontAwesome5 name="file-invoice-dollar" size={30} color={color} />
+        <FontAwesome5 name="file-invoice" size={30} color={color} />
       ),
       title: 'Mini Statement',
       screen: 'MiniStatement',
