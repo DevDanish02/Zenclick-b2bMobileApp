@@ -7,6 +7,7 @@ import {
   StyleSheet,
   SafeAreaView,
 } from 'react-native';
+import {Image} from 'react-native-svg';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const LoginScreen = ({navigation}) => {
@@ -22,13 +23,14 @@ const LoginScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.card}>
-         <Image
-      source={require('../assets/images/zenklick.jpeg')}
-      style={styles.logo}
-    />
+      <View>
+        <Image
+          source={require('../assets/images/ZenKlick.jpeg')}
+          style={styles.logo}
+        />
         <Text style={styles.title}>Login to Zenklick</Text>
-
+      </View>
+      <View style={styles.card}>
         <TextInput
           style={styles.input}
           placeholder="Mobile number or email ID"
@@ -85,6 +87,10 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowRadius: 6,
+  },
+  logo: {
+    height: 100,
+    width: 100,
   },
   title: {
     fontSize: 20,
