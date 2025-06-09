@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -74,7 +74,9 @@ const SignUpScreen = ({navigation}) => {
         onChangeText={setConfirmPassword}
       />
 
-      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('Main')}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
 
@@ -82,12 +84,11 @@ const SignUpScreen = ({navigation}) => {
         Already have an account? <Text style={styles.link}>Login</Text>
       </Text> */}
       <Text style={styles.footerText}>
-  Already have an account?{' '}
-  <Text style={styles.link} onPress={() => navigation.navigate('Login')}>
-    Login
-  </Text>
-</Text>
-
+        Already have an account?{' '}
+        <Text style={styles.link} onPress={() => navigation.navigate('Login')}>
+          Login
+        </Text>
+      </Text>
     </ScrollView>
   );
 };

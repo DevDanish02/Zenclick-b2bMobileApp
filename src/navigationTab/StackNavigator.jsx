@@ -49,6 +49,7 @@ import AddMoney from '../components/HomeScreen/AddMoney';
 import ContactListScreen from '../screens/UtilityScreen/ContactListScreen';
 import HomeScreen from '../screens/HomeScreen';
 import DashBoardScreen from '../screens/DashBoardScreen';
+import BottomTabNavigator from './BottomTab';
 
 const Stack = createNativeStackNavigator();
 
@@ -56,11 +57,12 @@ const StackNavigator = () => (
   <Stack.Navigator screenOptions={{headerShown: false}}>
     <Stack.Screen name="Splash" component={SplashScreen} />
     <Stack.Screen name="Login" component={LoginScreen} />
-    <Stack.Screen name="Otp" component={OtpScreen}/>
-    <Stack.Screen name='Home' component={HomeScreen}/>
-    <Stack.Screen name="SignUp" component={SignUpScreen} />
-    <Stack.Screen name='DashBoard' component={DashBoardScreen} />
+    <Stack.Screen name="Otp" component={OtpScreen} />
     <Stack.Screen name="Main" component={DrawerNavigator} />
+
+    <Stack.Screen name="SignUp" component={SignUpScreen} />
+    <Stack.Screen name="DashBoard" component={DashBoardScreen} />
+    {/* <Stack.Screen name="Drawer" component={DrawerNavigator} /> */}
 
     {/* Utility */}
     <Stack.Screen name="MobileRecharge" component={MobileRechargeScreen} />

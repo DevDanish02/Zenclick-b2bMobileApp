@@ -6,9 +6,9 @@ import {
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
+  Image,
 } from 'react-native';
-import {Image} from 'react-native-svg';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {MaterialCommunityIcons} from '../constants/Icon';
 
 const LoginScreen = ({navigation}) => {
   const [input, setInput] = useState('');
@@ -23,7 +23,7 @@ const LoginScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
+      <View style={{width: '100%', height: 200}}>
         <Image
           source={require('../assets/images/ZenKlick.jpeg')}
           style={styles.logo}
@@ -62,9 +62,20 @@ const LoginScreen = ({navigation}) => {
           <Text style={styles.googleText}>Login With Google</Text>
         </TouchableOpacity>
 
-        {/* <Text style={styles.footer}>
-          Don’t have an account? <Text style={styles.signUp}>Sign Up</Text>
-        </Text> */}
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginVertical: 20,
+          }}>
+          <Text>Don’t have an account? </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+            <Text style={styles.footer}>
+              <Text style={styles.signUp}>Sign Up</Text>
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -90,8 +101,9 @@ const styles = StyleSheet.create({
   },
   logo: {
     height: 100,
-    width: 100,
+    width: '100%',
   },
+
   title: {
     fontSize: 20,
     color: '#333',
@@ -104,7 +116,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 8,
     paddingHorizontal: 12,
-    paddingVertical: 10,
+    paddingVertical: 15,
     marginBottom: 16,
     backgroundColor: '#fff',
     color: '#000',
@@ -143,10 +155,17 @@ const styles = StyleSheet.create({
   footer: {
     textAlign: 'center',
     color: '#555',
-    marginTop: 24,
+    // marginTop: 24,
   },
   signUp: {
     color: '#3a5aff',
     fontWeight: 'bold',
+  },
+  logo: {
+    width: 120,
+    height: 120,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+    marginBottom: 20,
   },
 });
