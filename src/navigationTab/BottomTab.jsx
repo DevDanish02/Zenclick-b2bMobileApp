@@ -4,9 +4,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons, MaterialIcons, Feather } from '../constants/Icon';
 import HomeScreen from '../screens/HomeScreen';
 import AllServices from '../screens/AllServices';
-import Reports from '../screens/Reports';
+// import Reports from '../screens/Reports';
 import Margin from '../screens/Margin';
-import Loan from '../screens/lLoan';
+import Loan from '../screens/Loan';
 import Colors from '../constants/Colors';
 import CustomerHistoryScreen from '../screens/HistoryScreen';
 
@@ -69,7 +69,7 @@ const BottomTabNavigator = () => (
     />
     <Tab.Screen
       name="Loan"
-      component={withBottomPadding(Menu)}
+      component={withBottomPadding(Loan)}
       options={{
         tabBarLabel: 'Loan',
         tabBarIcon: ({ color, size }) => (
