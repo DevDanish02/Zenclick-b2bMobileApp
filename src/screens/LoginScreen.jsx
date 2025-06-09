@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -8,7 +8,6 @@ import {
   SafeAreaView,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
 
 const LoginScreen = ({navigation}) => {
   const [input, setInput] = useState('');
@@ -24,6 +23,10 @@ const LoginScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.card}>
+         <Image
+      source={require('../assets/images/zenklick.jpeg')}
+      style={styles.logo}
+    />
         <Text style={styles.title}>Login to Zenklick</Text>
 
         <TextInput
@@ -35,13 +38,19 @@ const LoginScreen = ({navigation}) => {
           keyboardType="email-address"
         />
 
-        <TouchableOpacity style={styles.nextButton} onPress={()=>{navigation.navigate('Otp')}}>
+        <TouchableOpacity
+          style={styles.nextButton}
+          onPress={() => {
+            navigation.navigate('Otp');
+          }}>
           <Text style={styles.nextText}>Next</Text>
         </TouchableOpacity>
 
         <Text style={styles.or}>or</Text>
 
-        <TouchableOpacity style={styles.googleButton} onPress={handleGoogleLogin}>
+        <TouchableOpacity
+          style={styles.googleButton}
+          onPress={handleGoogleLogin}>
           <MaterialCommunityIcons
             name="google"
             size={20}
@@ -51,9 +60,9 @@ const LoginScreen = ({navigation}) => {
           <Text style={styles.googleText}>Login With Google</Text>
         </TouchableOpacity>
 
-        <Text style={styles.footer}>
+        {/* <Text style={styles.footer}>
           Don’t have an account? <Text style={styles.signUp}>Sign Up</Text>
-        </Text>
+        </Text> */}
       </View>
     </SafeAreaView>
   );

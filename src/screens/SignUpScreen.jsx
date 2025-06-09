@@ -74,13 +74,20 @@ const SignUpScreen = ({navigation}) => {
         onChangeText={setConfirmPassword}
       />
 
-      <TouchableOpacity style={styles.button} onPress={()=>{navigation.navigate('SignUp')}}>
+      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
 
-      <Text style={styles.footerText}>
+      {/* <Text style={styles.footerText}>
         Already have an account? <Text style={styles.link}>Login</Text>
-      </Text>
+      </Text> */}
+      <Text style={styles.footerText}>
+  Already have an account?{' '}
+  <Text style={styles.link} onPress={() => navigation.navigate('Login')}>
+    Login
+  </Text>
+</Text>
+
     </ScrollView>
   );
 };

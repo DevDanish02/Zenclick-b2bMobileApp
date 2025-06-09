@@ -6,7 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import AllServices from '../screens/AllServices';
 import Reports from '../screens/Reports';
 import Margin from '../screens/Margin';
-import Menu from '../screens/Menu';
+import Loan from '../screens/lLoan';
 import Colors from '../constants/Colors';
 import CustomerHistoryScreen from '../screens/HistoryScreen';
 
@@ -68,10 +68,10 @@ const BottomTabNavigator = () => (
       }}
     />
     <Tab.Screen
-      name="Menu"
+      name="Loan"
       component={withBottomPadding(Menu)}
       options={{
-        tabBarLabel: 'Menu',
+        tabBarLabel: 'Loan',
         tabBarIcon: ({ color, size }) => (
           <Feather name="menu" size={size} color={color} />
         ),
