@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
+  Image,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -143,4 +144,12 @@ const styles = StyleSheet.create({
     color: '#3a5aff',
     fontWeight: 'bold',
   },
+  logo: {
+  width: 120,
+  height: 120,
+  resizeMode: 'contain',
+  alignSelf: 'center',
+  marginBottom: 20,
+},
+
 });
