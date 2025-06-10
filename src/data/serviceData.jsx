@@ -184,6 +184,28 @@ export const rechargeAndBillPayment = [
   ],
 ];
 
+export const travelData = [
+  [
+    {
+      icon: color => <FontAwesome5 name="bus" size={30} color={color} />,
+      title: 'Bus        Booking',
+      screen: 'BusBooking',
+    },
+    {
+      icon: color => <FontAwesome5 name="train" size={30} color={color} />,
+      title: 'Train      Booking',
+      screen: 'TrainBooking',
+    },
+    {
+      icon: color => (
+        <FontAwesome5 name="plane-departure" size={30} color={color} />
+      ),
+      title: 'Flight Booking',
+      screen: 'FlightBooking',
+    },
+  ],
+];
+
 export const paymentData = [
   [
     {
@@ -220,28 +242,6 @@ export const insuranceData = [
       ),
       title: 'Renew Policy',
       screen: 'RenewPolicy',
-    },
-  ],
-];
-
-export const travelData = [
-  [
-    {
-      icon: color => <FontAwesome5 name="bus" size={30} color={color} />,
-      title: 'Bus        Booking',
-      screen: 'BusBooking',
-    },
-    {
-      icon: color => <FontAwesome5 name="train" size={30} color={color} />,
-      title: 'Train      Booking',
-      screen: 'TrainBooking',
-    },
-    {
-      icon: color => (
-        <FontAwesome5 name="plane-departure" size={30} color={color} />
-      ),
-      title: 'Flight Booking',
-      screen: 'FlightBooking',
     },
   ],
 ];
