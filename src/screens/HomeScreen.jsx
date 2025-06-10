@@ -155,6 +155,12 @@ const HomeScreen = ({navigation, route}) => {
           iconColor={iconColor}
           navigation={navigation}
         />
+         <ServiceSection
+          title="Travel"
+          data={travelData}
+          iconColor={iconColor}
+          navigation={navigation}
+        />
         <ServiceSection
           title="Aadhar Services"
           data={aadharData}
@@ -173,12 +179,7 @@ const HomeScreen = ({navigation, route}) => {
           iconColor={iconColor}
           navigation={navigation}
         />
-        <ServiceSection
-          title="Travel"
-          data={travelData}
-          iconColor={iconColor}
-          navigation={navigation}
-        />
+       
         <ServiceSection
           title="Registration"
           data={registrationData}
