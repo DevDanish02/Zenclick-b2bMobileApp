@@ -9,10 +9,11 @@ import {
 import HomeScreen from '../screens/HomeScreen';
 import AllServices from '../screens/AllServices';
 // import Reports from '../screens/Reports';
-import Margin from '../screens/Margin';
-import Loan from '../screens/Loan';
+//import Margin from '../screens/Margin';
+import Offers from '../screens/Offers';
 import Colors from '../constants/Colors';
 import CustomerHistoryScreen from '../screens/HistoryScreen';
+import Scanner from '../screens/Scanner';
 
 const Tab = createBottomTabNavigator();
 
@@ -51,7 +52,7 @@ const BottomTabNavigator = () => (
         ),
       }}
     />
-    <Tab.Screen
+    {/* <Tab.Screen
       name="Margin"
       component={withBottomPadding(Margin)}
       options={{
@@ -60,6 +61,16 @@ const BottomTabNavigator = () => (
           <MaterialIcons name="margin" size={size} color={color} />
         ),
       }}
+    /> */}
+    <Tab.Screen
+    name='Scanner'
+    component={withBottomPadding(Scanner)}
+    options={{
+      tabBarLabel:() => null,
+      tabBarIcon:({color, size})=>(
+        <MaterialCommunityIcons name="barcode-scan" size={size} color={color}/>
+      )
+    }}
     />
     <Tab.Screen
       name="History"
@@ -72,13 +83,13 @@ const BottomTabNavigator = () => (
       }}
     />
     <Tab.Screen
-      name="Loan"
-      component={withBottomPadding(Loan)}
+      name="Offers"
+      component={withBottomPadding(Offers)}
       options={{
-        tabBarLabel: 'Loan',
+        tabBarLabel: 'Offers',
         tabBarIcon: ({color, size}) => (
           <MaterialCommunityIcons
-            name="currency-inr"
+            name="sale"
             size={size}
             color={color}
           />

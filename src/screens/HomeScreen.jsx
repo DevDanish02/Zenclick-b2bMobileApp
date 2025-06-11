@@ -106,7 +106,7 @@ import {Alert} from 'react-native';
 
 import {
   utilityData,
-  bankingData,
+ rechargeAndBillPayment,
   paymentData,
   insuranceData,
   travelData,
@@ -157,9 +157,15 @@ const HomeScreen = ({navigation, route}) => {
           iconColor={iconColor}
           navigation={navigation}
         />
+// <<<<<<< develop
+         <ServiceSection
+          title="Travel"
+          data={travelData}
+// =======
         {/* <ServiceSection
           title="Banking"
           data={bankingData}
+// >>>>>>> main
           iconColor={iconColor}
           navigation={navigation}
         /> */}
@@ -187,12 +193,16 @@ const HomeScreen = ({navigation, route}) => {
           iconColor={iconColor}
           navigation={navigation}
         />
+// <<<<<<< develop
+       
+// =======
         {/* <ServiceSection
           title="Travel"
           data={travelData}
           iconColor={iconColor}
           navigation={navigation}
         /> */}
+// >>>>>>> main
         <ServiceSection
           title="Registration"
           data={registrationData}
