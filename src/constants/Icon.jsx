@@ -1,6 +1,7 @@
 // /constants/Icons.js
 export {default as FontAwesome} from 'react-native-vector-icons/FontAwesome';
 export {default as FontAwesome5} from 'react-native-vector-icons/FontAwesome5';
+export {default as FontAwesome6} from 'react-native-vector-icons/FontAwesome6';
 export {default as MaterialCommunityIcons} from 'react-native-vector-icons/MaterialCommunityIcons';
 export {default as MaterialIcons} from 'react-native-vector-icons/MaterialIcons';
 export {default as Foundation} from 'react-native-vector-icons/Foundation';

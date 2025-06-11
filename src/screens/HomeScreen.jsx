@@ -112,6 +112,7 @@ import {
   travelData,
   registrationData,
   aadharData,
+  rechargeAndBillPayment,
 } from '../data/serviceData';
 import WalletSection from '../components/HomeScreen/wallet';
 import {useFocusEffect} from '@react-navigation/native';
@@ -149,9 +150,22 @@ const HomeScreen = ({navigation, route}) => {
           iconColor={iconColor}
           navigation={navigation}
         />
+
         <ServiceSection
+          title="All Services"
+          data={rechargeAndBillPayment}
+          iconColor={iconColor}
+          navigation={navigation}
+        />
+        {/* <ServiceSection
           title="Banking"
           data={bankingData}
+          iconColor={iconColor}
+          navigation={navigation}
+        /> */}
+        <ServiceSection
+          title="Travel"
+          data={travelData}
           iconColor={iconColor}
           navigation={navigation}
         />
@@ -173,12 +187,12 @@ const HomeScreen = ({navigation, route}) => {
           iconColor={iconColor}
           navigation={navigation}
         />
-        <ServiceSection
+        {/* <ServiceSection
           title="Travel"
           data={travelData}
           iconColor={iconColor}
           navigation={navigation}
-        />
+        /> */}
         <ServiceSection
           title="Registration"
           data={registrationData}
