@@ -116,11 +116,12 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
   },
-  image: {
-    width: '100%',
-    height: 180,
+  logo: {
+    width: 120,
+    height: 120,
     resizeMode: 'contain',
-    marginBottom: 10,
+    alignSelf: 'center',
+    marginBottom: 20,
   },
   title: {
     fontSize: 26,
