@@ -7,7 +7,9 @@ import {
   StyleSheet,
   ScrollView,
   Alert,
+  Image,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const SignUpScreen = ({navigation}) => {
   const [name, setName] = useState('');
@@ -27,62 +29,76 @@ const SignUpScreen = ({navigation}) => {
       return;
     }
 
-    // Call your API or logic here
     Alert.alert('Success', 'Account created successfully!');
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Create Account</Text>
-
-      <TextInput
-        style={styles.input}
-        placeholder="Full Name"
-        value={name}
-        onChangeText={setName}
+      <Image
+        source={require('../assets/images/ZenKlick.jpeg')} // use your logo or image here
+        style={styles.logo}
       />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Email Address"
-        keyboardType="email-address"
-        value={email}
-        onChangeText={setEmail}
-      />
+      <Text style={styles.title}>Create Your Account</Text>
 
-      <TextInput
-        style={styles.input}
-        placeholder="Mobile Number"
-        keyboardType="phone-pad"
-        value={mobile}
-        onChangeText={setMobile}
-      />
+      <View style={styles.inputContainer}>
+        <Icon name="account" size={20} color="#777" style={styles.icon} />
+        <TextInput
+          style={styles.input}
+          placeholder="Full Name"
+          value={name}
+          onChangeText={setName}
+        />
+      </View>
 
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-      />
+      <View style={styles.inputContainer}>
+        <Icon name="email" size={20} color="#777" style={styles.icon} />
+        <TextInput
+          style={styles.input}
+          placeholder="Email Address"
+          keyboardType="email-address"
+          value={email}
+          onChangeText={setEmail}
+        />
+      </View>
 
-      <TextInput
-        style={styles.input}
-        placeholder="Confirm Password"
-        secureTextEntry
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-      />
+      <View style={styles.inputContainer}>
+        <Icon name="phone" size={20} color="#777" style={styles.icon} />
+        <TextInput
+          style={styles.input}
+          placeholder="Mobile Number"
+          keyboardType="phone-pad"
+          value={mobile}
+          onChangeText={setMobile}
+        />
+      </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('Main')}>
+      <View style={styles.inputContainer}>
+        <Icon name="lock" size={20} color="#777" style={styles.icon} />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Icon name="lock-check" size={20} color="#777" style={styles.icon} />
+        <TextInput
+          style={styles.input}
+          placeholder="Confirm Password"
+          secureTextEntry
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+        />
+      </View>
+
+      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
 
-      {/* <Text style={styles.footerText}>
-        Already have an account? <Text style={styles.link}>Login</Text>
-      </Text> */}
       <Text style={styles.footerText}>
         Already have an account?{' '}
         <Text style={styles.link} onPress={() => navigation.navigate('Login')}>
@@ -96,41 +112,65 @@ const SignUpScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#FAFAFA',
     flexGrow: 1,
     justifyContent: 'center',
   },
+  image: {
+    width: '100%',
+    height: 180,
+    resizeMode: 'contain',
+    marginBottom: 10,
+  },
   title: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: 'bold',
-    marginBottom: 30,
     color: '#333',
+    marginBottom: 20,
     textAlign: 'center',
   },
-  input: {
-    height: 50,
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: '#FFF',
     borderRadius: 10,
-    paddingHorizontal: 15,
     marginBottom: 15,
     borderColor: '#DDD',
     borderWidth: 1,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  icon: {
+    padding: 10,
+  },
+  input: {
+    flex: 1,
+    height: 50,
+    paddingHorizontal: 10,
   },
   button: {
     backgroundColor: '#007AFF',
     paddingVertical: 15,
-    borderRadius: 10,
+    borderRadius: 12,
     marginTop: 10,
+    shadowColor: '#007AFF',
+    shadowOffset: {width: 0, height: 3},
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 5,
   },
   buttonText: {
     color: '#FFF',
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 18,
   },
   footerText: {
     textAlign: 'center',
-    marginTop: 20,
+    marginTop: 25,
     color: '#555',
   },
   link: {
