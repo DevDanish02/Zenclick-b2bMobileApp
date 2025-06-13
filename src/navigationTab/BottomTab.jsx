@@ -14,6 +14,7 @@ import Offers from '../screens/Offers';
 import Colors from '../constants/Colors';
 import CustomerHistoryScreen from '../screens/HistoryScreen';
 import Scanner from '../screens/Scanner';
+import { blue } from 'react-native-reanimated/lib/typescript/Colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -68,7 +69,7 @@ const BottomTabNavigator = () => (
     options={{
       tabBarLabel:() => null,
       tabBarIcon:({color, size})=>(
-        <MaterialCommunityIcons name="barcode-scan" size={size} color={color}/>
+        <MaterialCommunityIcons name="barcode-scan" size={size} color={blue}/>
       )
     }}
     />
