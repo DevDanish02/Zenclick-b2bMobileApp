@@ -188,9 +188,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    alignItems:'center' // centre horizontally
   },
   scrollContainer: {
     paddingBottom: 40,
+    justifyContent:'center' // centre vertically
   },
   headerContainer: {
     flexDirection: 'row',
