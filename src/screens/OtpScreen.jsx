@@ -1,10 +1,17 @@
-import React, { useRef, useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import React, {useRef, useState} from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Alert,
+} from 'react-native';
 
-const OtpScreen = ({ navigation, route }) => {
-  const { userInput } = route.params || {};
+const OtpScreen = ({navigation, route}) => {
+  const {userInput} = route.params || {};
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
-  const inputs = useRef([]);           // refs for each TextInput
+  const inputs = useRef([]); // refs for each TextInput
 
   const handleChangeText = (text, index) => {
     // allow either a single digit or empty (for backspace)
@@ -32,13 +39,15 @@ const OtpScreen = ({ navigation, route }) => {
 
     // ✅ Accept ANY 6-digit OTP (demo). Replace this block with real verification if needed.
     Alert.alert('Success', `OTP ${enteredOtp} verified`, [
-      { text: 'OK', onPress: () => navigation.goBack() }, // or navigation.navigate('Home')
+      {text: 'OK', onPress: () => navigation.goBack()}, // or navigation.navigate('Home')
     ]);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Verify OTP for {userInput || 'your number'}</Text>
+      <Text style={styles.title}>
+        Verify OTP for {userInput || 'your number'}
+      </Text>
 
       <View style={styles.otpContainer}>
         {otp.map((digit, index) => (
@@ -56,7 +65,11 @@ const OtpScreen = ({ navigation, route }) => {
         ))}
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={()=>{navigation.navigate('Home')}}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate('Main');
+        }}>
         <Text style={styles.buttonText}>Verify OTP</Text>
       </TouchableOpacity>
     </View>
