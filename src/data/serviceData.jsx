@@ -10,6 +10,29 @@ import {
 } from '../constants/Icon';
 // import Colors from '../constants/Colors';
 
+export const travelData = [
+  [
+    {
+      icon: color => <FontAwesome5 name="bus" size={30} color={color} />,
+      title: 'Bus        Booking',
+      screen: 'BusBooking',
+    },
+    {
+      icon: color => <FontAwesome5 name="train" size={30} color={color} />,
+      title: 'Train      Booking',
+      screen: 'TrainBooking',
+    },
+    {
+      icon: color => (
+        <FontAwesome5 name="plane-departure" size={30} color={color} />
+      ),
+      title: 'Flight Booking',
+      screen: 'FlightBooking',
+    },
+  ],
+];
+
+
 export const utilityData = [
   [
     {
@@ -123,7 +146,7 @@ export const rechargeAndBillPayment = [
       <MaterialIcons name="electrical-services" size={30} color={color} />
       ),
       title: 'Electricity',
-      screen: 'Electicity'
+      screen: 'Electricity'
     },
      {
     icon: color=>(
@@ -184,27 +207,27 @@ export const rechargeAndBillPayment = [
   ],
 ];
 
-export const travelData = [
-  [
-    {
-      icon: color => <FontAwesome5 name="bus" size={30} color={color} />,
-      title: 'Bus        Booking',
-      screen: 'BusBooking',
-    },
-    {
-      icon: color => <FontAwesome5 name="train" size={30} color={color} />,
-      title: 'Train      Booking',
-      screen: 'TrainBooking',
-    },
-    {
-      icon: color => (
-        <FontAwesome5 name="plane-departure" size={30} color={color} />
-      ),
-      title: 'Flight Booking',
-      screen: 'FlightBooking',
-    },
-  ],
-];
+// export const travelData = [
+//   [
+//     {
+//       icon: color => <FontAwesome5 name="bus" size={30} color={color} />,
+//       title: 'Bus        Booking',
+//       screen: 'BusBooking',
+//     },
+//     {
+//       icon: color => <FontAwesome5 name="train" size={30} color={color} />,
+//       title: 'Train      Booking',
+//       screen: 'TrainBooking',
+//     },
+//     {
+//       icon: color => (
+//         <FontAwesome5 name="plane-departure" size={30} color={color} />
+//       ),
+//       title: 'Flight Booking',
+//       screen: 'FlightBooking',
+//     },
+//   ],
+// ];
 
 export const paymentData = [
   [

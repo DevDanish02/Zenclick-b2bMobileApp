@@ -14,8 +14,7 @@ import Offers from '../screens/Offers';
 import Colors from '../constants/Colors';
 import CustomerHistoryScreen from '../screens/HistoryScreen';
 import Scanner from '../screens/Scanner';
-import { blue } from 'react-native-reanimated/lib/typescript/Colors';
-
+import { blue } from '../constants/Colors';
 const Tab = createBottomTabNavigator();
 
 // Wrapper to ensure screens don’t cover the tab bar
@@ -67,11 +66,17 @@ const BottomTabNavigator = () => (
     name='Scanner'
     component={withBottomPadding(Scanner)}
     options={{
-      tabBarLabel:() => null,
-      tabBarIcon:({color, size})=>(
-        <MaterialCommunityIcons name="barcode-scan" size={size} color={blue}/>
-      )
-    }}
+    tabBarLabel: () => null,
+    tabBarIcon: ({ size }) => (
+      <View style={styles.scannerTabButton}>
+        <MaterialCommunityIcons
+          name="barcode-scan"
+          size={size + 8}
+          color="#fff"
+        />
+      </View>
+    ),
+  }}
     />
     <Tab.Screen
       name="History"
@@ -106,6 +111,23 @@ const styles = StyleSheet.create({
     // paddingBottom: 80, // 👈 this makes space for the tab bar
     backgroundColor: '#fff',
   },
+  scannerTabButton: {
+  height: 60,
+  width: 60,
+  borderRadius: 30,
+  backgroundColor: Colors.primary, // uses your existing blue color from Colors.js
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginBottom: 30,
+  position: 'absolute',
+  bottom: 0,
+  elevation: 8, // Android shadow
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.3,
+  shadowRadius: 4.65, 
+},
+
 });
 
 export default BottomTabNavigator;
