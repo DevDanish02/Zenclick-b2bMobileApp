@@ -96,9 +96,9 @@ android {
     }
     release {
         storeFile file('android/my-release-key.keystore')
-        storePassword 'Danish'
+        storePassword '123456'
         keyAlias 'my-key-alias'
-        keyPassword 'Danish'
+        keyPassword '123456'
 
  
     }

@@ -65,11 +65,7 @@ const OtpScreen = ({navigation, route}) => {
         ))}
       </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          navigation.navigate('Main');
-        }}>
+
         <Text style={styles.buttonText}>Verify OTP</Text>
       </TouchableOpacity>
     </View>

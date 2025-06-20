@@ -114,6 +114,8 @@ import {
   aadharData,
 } from '../data/serviceData';
 import WalletSection from '../components/HomeScreen/wallet';
+import OfferCarousel from '../components/HomeScreen/OfferCarousel'; // ✅ Carousel Import
+
 import {useFocusEffect} from '@react-navigation/native';
 
 const HomeScreen = ({navigation, route}) => {
@@ -143,12 +145,14 @@ const HomeScreen = ({navigation, route}) => {
           onAddMoneyPress={() => navigation.navigate('AddMoney')} // Navigate to AddMoney screen
         />
 
-        <ServiceSection
+        <OfferCarousel />
+
+        {/* <ServiceSection
           title="Utility Services"
           data={utilityData}
           iconColor={iconColor}
           navigation={navigation}
-        />
+
 
         <ServiceSection
           title="All Services"
@@ -160,9 +164,11 @@ const HomeScreen = ({navigation, route}) => {
         <ServiceSection
           title="Travel"
           data={travelData}
+
           iconColor={iconColor}
           navigation={navigation}
         />
+       
         <ServiceSection
           title="Aadhar Services"
           data={aadharData}
