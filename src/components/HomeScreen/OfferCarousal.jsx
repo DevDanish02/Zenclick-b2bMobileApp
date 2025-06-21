@@ -1,19 +1,26 @@
 // components/HomeScreen/OfferCarousel.js
 import React from 'react';
-import {View, Text, StyleSheet, FlatList, Image, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Image,
+  Dimensions,
+} from 'react-native';
 
 const offers = [
   {
     id: '1',
     title: 'Get ₹10 Discount',
     description: 'On Electricity Bill Payment & Credit Card Bill Payment',
-    image: require('../../assets/offer1.png'), 
+    image: require('../../assets/images/mobileUtilities.webp'),
   },
   {
     id: '2',
     title: 'Bus Ticket Cashback',
     description: 'Cancel within 6 hrs & get 100% refund',
-    image: require('../../assets/offer2.png'),
+    image: require('../../assets/images/flight.png'),
   },
 ];
 
@@ -42,7 +49,7 @@ const OfferCarousel = () => {
 
 const styles = StyleSheet.create({
   carouselContainer: {
-    marginBottom: 15,
+    marginVertical: 15,
   },
   card: {
     width: width - 40,

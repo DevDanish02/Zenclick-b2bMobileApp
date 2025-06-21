@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Alert,
 } from 'react-native';
+import Colors from '../constants/Colors';
 
 const OtpScreen = ({navigation, route}) => {
   const {userInput} = route.params || {};
@@ -39,7 +40,7 @@ const OtpScreen = ({navigation, route}) => {
 
     // ✅ Accept ANY 6-digit OTP (demo). Replace this block with real verification if needed.
     Alert.alert('Success', `OTP ${enteredOtp} verified`, [
-      {text: 'OK', onPress: () => navigation.goBack()}, // or navigation.navigate('Home')
+      {text: 'OK', onPress: () => navigation.navigate('Main')}, // or navigation.navigate('Home')
     ]);
   };
 
@@ -65,7 +66,7 @@ const OtpScreen = ({navigation, route}) => {
         ))}
       </View>
 
-
+      <TouchableOpacity onPress={handleVerify}>
         <Text style={styles.buttonText}>Verify OTP</Text>
       </TouchableOpacity>
     </View>
@@ -112,5 +113,9 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
+    backgroundColor: Colors.primary,
+    marginTop: 20,
+    padding: 10,
+    borderRadius: 20,
   },
 });
