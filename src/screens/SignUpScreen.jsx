@@ -18,6 +18,9 @@ const SignUpScreen = ({navigation}) => {
   const [mobile, setMobile] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [agreeTerms, setAgreeTerms] = useState(false);
+  const [acceptExperian, setAcceptExperian] = useState(false);
+
 
   const handleSignUp = () => {
     if (!name || !email || !mobile || !password || !confirmPassword) {
@@ -52,7 +55,7 @@ const SignUpScreen = ({navigation}) => {
         />
       </View>
       <View style={styles.inputContainer}>
-        <Icon name="lastName" size={20} color="#777" style={styles.icon} />
+        <Icon name="account-outline" size={20} color="#777" style={styles.icon} />
         <TextInput
           style={styles.input}
           placeholder="Last Name"
