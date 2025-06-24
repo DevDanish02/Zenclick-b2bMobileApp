@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const SignUpScreen = ({navigation}) => {
   const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [mobile, setMobile] = useState('');
   const [password, setPassword] = useState('');
@@ -50,7 +51,15 @@ const SignUpScreen = ({navigation}) => {
           onChangeText={setName}
         />
       </View>
-
+      <View style={styles.inputContainer}>
+        <Icon name="lastName" size={20} color="#777" style={styles.icon} />
+        <TextInput
+          style={styles.input}
+          placeholder="Last Name"
+          value={lastName}
+          onChangeText={setLastName}
+        />
+      </View>
       <View style={styles.inputContainer}>
         <Icon name="email" size={20} color="#777" style={styles.icon} />
         <TextInput
@@ -93,6 +102,26 @@ const SignUpScreen = ({navigation}) => {
           value={confirmPassword}
           onChangeText={setConfirmPassword}
         />
+      </View>
+
+    <View style={styles.checkboxContainer}>
+        <CheckBox
+          value={agreeTerms}
+          onValueChange={setAgreeTerms}
+        />
+        <Text style={styles.checkboxText}>
+          I agree to the Zenclick Mobile App Terms & Conditions and Privacy Policy.
+        </Text>
+      </View>
+
+      <View style={styles.checkboxContainer}>
+        <CheckBox
+          value={acceptExperian}
+          onValueChange={setAcceptExperian}
+        />
+        <Text style={styles.checkboxText}>
+          I accept Experian Terms & Conditions and authorize Zenclick Mobile App to fetch my credit report.
+        </Text>
       </View>
 
       <TouchableOpacity style={styles.button} onPress={handleSignUp}>
@@ -151,6 +180,15 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 50,
     paddingHorizontal: 10,
+  },
+   checkboxContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginBottom: 15,
+  },
+  checkboxText: {
+    marginLeft: 10,
+    flex: 1,
   },
   button: {
     backgroundColor: '#007AFF',

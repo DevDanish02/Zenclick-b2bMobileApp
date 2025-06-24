@@ -1,107 +1,150 @@
-import React, { useRef, useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+  Alert,
+} from 'react-native';
 
-const OtpScreen = ({ navigation, route }) => {
-  const { userInput } = route.params || {};
-  const [otp, setOtp] = useState(['', '', '', '', '', '']);
-  const inputs = useRef([]);           // refs for each TextInput
+const OTPVerificationScreen = ({ navigation, route }) => {
+  const [otp, setOtp] = useState(['', '', '', '']);
+  const [timer, setTimer] = useState(60);
 
-  const handleChangeText = (text, index) => {
-    // allow either a single digit or empty (for backspace)
-    if (/^\d$/.test(text) || text === '') {
-      const newOtp = [...otp];
-      newOtp[index] = text;
-      setOtp(newOtp);
+  const inputs = useRef([]);
 
-      if (text && index < 5) {
-        // move to next box on digit entry
-        inputs.current[index + 1]?.focus?.();
-      } else if (!text && index > 0) {
-        // move back on backspace
-        inputs.current[index - 1]?.focus?.();
-      }
+  const phone = route.params?.phone || '8433116360'; // fallback
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer(prev => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleChange = (text, index) => {
+    const newOtp = [...otp];
+    newOtp[index] = text;
+    setOtp(newOtp);
+    if (text && index < 3) {
+      inputs.current[index + 1].focus();
     }
   };
 
   const handleVerify = () => {
-    const enteredOtp = otp.join('');
-    if (enteredOtp.length < 6) {
-      Alert.alert('Error', 'Please enter all 6 digits of the OTP');
+    const enteredOTP = otp.join('');
+    if (enteredOTP.length !== 4) {
+      Alert.alert('Error', 'Please enter the 4-digit OTP');
       return;
     }
-
-    // ✅ Accept ANY 6-digit OTP (demo). Replace this block with real verification if needed.
-    Alert.alert('Success', `OTP ${enteredOtp} verified`, [
-      { text: 'OK', onPress: () => navigation.goBack() }, // or navigation.navigate('Home')
-    ]);
+    Alert.alert('Success', 'OTP Verified');
+    navigation.navigate('Home');
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Verify OTP for {userInput || 'your number'}</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.title}>Verify</Text>
+      <Text style={styles.subtitle}>Enter the OTP we’ve sent to</Text>
+      <Text style={styles.phone}>{phone} <Text style={styles.edit}>EDIT</Text></Text>
 
       <View style={styles.otpContainer}>
         {otp.map((digit, index) => (
           <TextInput
             key={index}
             style={styles.otpInput}
-            keyboardType="numeric"
+            keyboardType="number-pad"
             maxLength={1}
             value={digit}
-            onChangeText={text => handleChangeText(text, index)}
+            onChangeText={text => handleChange(text, index)}
             ref={ref => (inputs.current[index] = ref)}
-            autoFocus={index === 0}
-            returnKeyType="done"
           />
         ))}
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={handleVerify}>
-        <Text style={styles.buttonText}>Verify OTP</Text>
+      <TouchableOpacity style={styles.verifyButton} onPress={handleVerify}>
+        <Text style={styles.verifyText}>Verify & Continue</Text>
       </TouchableOpacity>
-    </View>
+
+      <Text style={styles.timer}>
+        Didn’t get a text? ⏱ {timer < 10 ? `00:0${timer}` : `00:${timer}`}
+      </Text>
+
+      <Text style={styles.callOption}>
+        📞 <Text style={styles.callLink}>Get via Call</Text> ⏱ {timer < 10 ? `00:0${timer}` : `00:${timer}`}
+      </Text>
+    </ScrollView>
   );
 };
 
-export default OtpScreen;
-
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
+    padding: 24,
+    flexGrow: 1,
+    backgroundColor: '#fff',
   },
   title: {
-    fontSize: 18,
-    marginBottom: 30,
-    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: '700',
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 15,
+    color: '#333',
+  },
+  phone: {
+    fontSize: 17,
+    fontWeight: '600',
+    marginVertical: 10,
+  },
+  edit: {
+    fontSize: 14,
+    color: '#007AFF',
+    fontWeight: '500',
   },
   otpContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '80%',
+    marginVertical: 20,
   },
   otpInput: {
     borderWidth: 1,
-    borderColor: '#999',
-    width: 40,
-    height: 50,
+    borderColor: '#ccc',
+    width: 50,
+    height: 55,
     textAlign: 'center',
-    fontSize: 24,
-    borderRadius: 8,
-    backgroundColor: '#fff',
-  },
-  button: {
-    marginTop: 30,
-    backgroundColor: '#3a5aff',
-    paddingVertical: 15,
-    paddingHorizontal: 60,
+    fontSize: 18,
     borderRadius: 8,
   },
-  buttonText: {
+  verifyButton: {
+    backgroundColor: '#007AFF',
+    paddingVertical: 14,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  verifyText: {
     color: '#fff',
-    fontWeight: 'bold',
     fontSize: 16,
+    fontWeight: '600',
+  },
+  timer: {
+    fontSize: 14,
+    textAlign: 'center',
+    marginTop: 10,
+    color: '#555',
+  },
+  callOption: {
+    fontSize: 14,
+    textAlign: 'center',
+    marginTop: 5,
+    color: '#555',
+  },
+  callLink: {
+    color: '#FF713C',
+    fontWeight: '600',
   },
 });
+
+export default OTPVerificationScreen;
