@@ -125,7 +125,7 @@ export const rechargeAndBillPayment = [
       <Ionicons name="tv-outline" size={30} color={color} />
       ),
       title: 'DTH',
-      screen: 'DTH'
+      screen: 'DTHRecharge'
     },
      {
     icon: color=>(

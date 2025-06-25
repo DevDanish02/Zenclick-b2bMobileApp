@@ -114,7 +114,7 @@ import {
   aadharData,
 } from '../data/serviceData';
 import WalletSection from '../components/HomeScreen/wallet';
-import OfferCarousel from '../components/HomeScreen/OfferCarousel'; // ✅ Carousel Import
+import OfferCarousel from '../components/HomeScreen/OfferCarousal' // ✅ Carousel Import
 
 import {useFocusEffect} from '@react-navigation/native';
 

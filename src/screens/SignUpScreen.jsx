@@ -8,8 +8,12 @@ import {
   ScrollView,
   Alert,
   Image,
+  
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import CheckBox from '@react-native-community/checkbox';
+
+
 
 const SignUpScreen = ({navigation}) => {
   const [name, setName] = useState('');
@@ -204,6 +208,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5,
   },
+
   buttonText: {
     color: '#FFF',
     textAlign: 'center',

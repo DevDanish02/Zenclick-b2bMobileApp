@@ -7,13 +7,13 @@ const offers = [
     id: '1',
     title: 'Get ₹10 Discount',
     description: 'On Electricity Bill Payment & Credit Card Bill Payment',
-    image: require('../../assets/offer1.png'), 
+    image: require('../../assets/images/offer1.png'), 
   },
   {
     id: '2',
     title: 'Bus Ticket Cashback',
     description: 'Cancel within 6 hrs & get 100% refund',
-    image: require('../../assets/offer2.png'),
+    image: require('../../assets/images/offer2.png'),
   },
 ];
 

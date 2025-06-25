@@ -6,7 +6,7 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import {Entypo} from '../../constants/Icon';
+import Entypo from 'react-native-vector-icons/Entypo';
 const {width} = Dimensions.get('window');
 import Colors from '../../constants/Colors';
 

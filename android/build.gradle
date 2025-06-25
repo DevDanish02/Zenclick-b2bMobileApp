@@ -29,3 +29,4 @@ allprojects {
 
 // Make sure to apply the React Native plugin for the root project
 apply plugin: "com.facebook.react.rootproject"
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"

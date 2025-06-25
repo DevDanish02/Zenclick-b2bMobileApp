@@ -2,7 +2,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import LoginScreen from '../screens/LoginScreen';
-import OtpScreen from '../screens/OtpScreen';
+import OTPVerificationScreen from '../screens/OtpScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import DrawerNavigator from './drawerTab';
 import SplashScreen from '../screens/SplashScreen';
@@ -47,7 +47,7 @@ import LanguageScreen from '../screens/LanguageScreen';
 import HelpSupportScreen from '../screens/HelpSupportScreen';
 import AddMoney from '../components/HomeScreen/AddMoney';
 import ContactListScreen from '../screens/UtilityScreen/ContactListScreen';
-import HomeScreen from '../screens/HomeScreen';
+// import HomeScreen from '../screens/HomeScreen';
 import DashBoardScreen from '../screens/DashBoardScreen';
 import BottomTabNavigator from './BottomTab';
 
@@ -57,7 +57,7 @@ const StackNavigator = () => (
   <Stack.Navigator screenOptions={{headerShown: false}}>
     <Stack.Screen name="Splash" component={SplashScreen} />
     <Stack.Screen name="Login" component={LoginScreen} />
-    <Stack.Screen name="Otp" component={OtpScreen} />
+    <Stack.Screen name="Otp" component={OTPVerificationScreen} />
     <Stack.Screen name="Main" component={DrawerNavigator} />
     {/* <Stack.Screen name='Home' component={HomeScreen}/> */}
 
