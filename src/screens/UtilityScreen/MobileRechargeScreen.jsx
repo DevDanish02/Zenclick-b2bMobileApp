@@ -8,8 +8,9 @@ import {
   StyleSheet,
   Alert,
   PermissionsAndroid,
-  Platform,
   ActivityIndicator,
+  Platform,
+  SafeAreaView,
 } from 'react-native';
 import Contacts from 'react-native-contacts';
 import LinearGradient from 'react-native-linear-gradient';
@@ -27,34 +28,32 @@ const MobileRechargeScreen = ({navigation}) => {
 
   useEffect(() => {
     fetchBillerData();
-    ReadContacts();
+    requestContactPermission();
   }, []);
 
-  const ReadContacts = () => {
-    PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
-      title: 'Contacts',
-      message: 'This app would like to view your contacts.',
-      buttonPositive: 'Please accept bare mortal',
-    })
-      .then(res => {
-        if (res === 'granted') {
-          Contacts.getAll()
-            .then(contacts => {
-              // work with contacts
-              console.log(contacts);
-            })
-            .catch(e => {
-              console.log(e);
-            });
-        }
-      })
-      .catch(error => console.log(error));
+  const requestContactPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
+        {
+          title: 'Contacts Permission',
+          message: 'App needs access to your contacts.',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        Contacts.getAll().then(setContacts).catch(console.log);
+      }
+    } catch (err) {
+      console.warn(err);
+    }
   };
 
   const fetchBillerData = async () => {
     try {
       setLoading(true);
-      const records = []; // Replace with real API
+      // Replace this mock with real API
+      const records = [];
       if (records.length > 0) {
         setBillerList(
           records.map(biller => ({
@@ -96,11 +95,11 @@ const MobileRechargeScreen = ({navigation}) => {
 
   return (
     <LinearGradient colors={['#dbeafe', '#fff']} style={{flex: 1}}>
-      <ScrollView
-        contentContainerStyle={styles.scrollContainer}
-        keyboardShouldPersistTaps="handled"
-        showsVerticalScrollIndicator={false}>
-        <View style={styles.container}>
+      <SafeAreaView style={styles.safeArea}>
+        <ScrollView
+          contentContainerStyle={styles.scrollContainer}
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}>
           <View style={styles.headerContainer}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <Ionicons name="arrow-back" size={26} color={Colors.primary} />
@@ -129,7 +128,6 @@ const MobileRechargeScreen = ({navigation}) => {
                   maxLength={10}
                 />
                 <TouchableOpacity>
-                  {/* onPress={handleSelectContact} */}
                   <FontAwesome5
                     name="address-book"
                     size={22}
@@ -147,13 +145,13 @@ const MobileRechargeScreen = ({navigation}) => {
                   placeholder={{label: 'Select a biller...', value: null}}
                   style={{
                     inputIOS: {padding: 12, color: '#000'},
-                    inputAndroid: {padding: 12, color: '#000'},
+                    inputAndroid: {padding: 0, color: '#000'},
                   }}
                   value={selectedBiller}
                 />
               </View>
 
-              <Text style={styles.label}>Amount</Text>
+              <Text style={styles.title}>Amount</Text>
               <View style={styles.inputContainer}>
                 <FontAwesome5
                   name="money-bill-wave"
@@ -178,26 +176,26 @@ const MobileRechargeScreen = ({navigation}) => {
               </TouchableOpacity>
             </View>
           )}
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </SafeAreaView>
     </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
-    padding: 20,
-    alignItems:'center' // centre horizontally
+    backgroundColor: 'transparent',
   },
   scrollContainer: {
-    paddingBottom: 40,
-    justifyContent:'center' // centre vertically
+    paddingBottom: 100, // So the bottom content doesn't hide behind the tab
+    paddingHorizontal: 20,
   },
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 30,
+    marginTop: 10,
   },
   headerTitle: {
     fontSize: 24,
@@ -215,11 +213,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     marginBottom: 8,
-    color: '#333',
-  },
-  label: {
-    fontSize: 16,
-    marginBottom: 10,
     color: '#333',
   },
   inputContainer: {

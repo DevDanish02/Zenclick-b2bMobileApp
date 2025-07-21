@@ -1,22 +1,32 @@
-// src/navigationTab/DrawerNavigator.js
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import BottomTabNavigator from './BottomTab';
 import ProfileScreen from '../screens/ProfileScreen';
 import SettingsScreen from '../screens/SettingScreen';
 import CustomDrawerContent from '../components/HomeScreen/CustomDrawerContent';
+import Colors from '../constants/Colors';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   return (
     <Drawer.Navigator
-      screenOptions={{headerShown: false}}
-      drawerContent={props => <CustomDrawerContent {...props} />}>
-      {/* Main bottom tabs */}
+      drawerContent={props => <CustomDrawerContent {...props} />}
+      screenOptions={{
+        headerShown: false,
+        drawerStyle: {
+          backgroundColor: Colors.grayWhite, // Drawer background color
+          width: 260,
+        },
+        drawerLabelStyle: {
+          fontSize: 16,
+          fontWeight: '500',
+        },
+        drawerActiveTintColor: Colors.primary, // Active text color
+        drawerInactiveTintColor: Colors.textDark, // Inactive text color
+        drawerActiveBackgroundColor: Colors.mintGreen, // Background when active
+      }}>
       <Drawer.Screen name="HomeTab" component={BottomTabNavigator} />
-
-      {/* New drawer entries */}
       <Drawer.Screen
         name="Profile"
         component={ProfileScreen}

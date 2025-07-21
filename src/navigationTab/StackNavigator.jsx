@@ -50,6 +50,8 @@ import ContactListScreen from '../screens/UtilityScreen/ContactListScreen';
 import HomeScreen from '../screens/HomeScreen';
 import DashBoardScreen from '../screens/DashBoardScreen';
 import BottomTabNavigator from './BottomTab';
+import SearchScreen from '../components/HomeScreen/SearchScreen';
+import CashbackScreen from '../components/HomeScreen/CashbackScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -76,6 +78,10 @@ const StackNavigator = () => (
     <Stack.Screen name="OTTSubscription" component={OTTSubscription} />
     <Stack.Screen name="PANCardNSDL" component={PANCardNSDL} />
     <Stack.Screen name="LICPremium" component={LICPremium} />
+
+    {/* SearchScreen */}
+    <Stack.Screen name="SearchScreen" component={SearchScreen} />
+    <Stack.Screen name="CashbackScreen" component={CashbackScreen} />
 
     {/* Banking */}
     <Stack.Screen name="BankBalance" component={BankBalanceScreen} />

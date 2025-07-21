@@ -278,7 +278,7 @@ const CustomerHistoryScreen = ({navigation}) => {
         data={filteredData}
         renderItem={renderItem}
         keyExtractor={item => item.id}
-        contentContainerStyle={{paddingBottom: 20}}
+        contentContainerStyle={{paddingBottom: 80, paddingHorizontal: 16}} // 👈 updated
         ListEmptyComponent={
           <Text style={styles.noData}>No matching records found.</Text>
         }

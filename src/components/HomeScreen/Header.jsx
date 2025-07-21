@@ -14,11 +14,11 @@ import {useNavigation} from '@react-navigation/native';
 const Header = ({
   userName = 'Random',
   profileImage = 'https://i.pravatar.cc/200',
-  notificationCount = 5, // For demo, you can pass the notification count
+  notificationCount = 5,
+  cashbackAmount = 150, // New: Cashback amount
 }) => {
   const navigation = useNavigation();
 
-  // Get initials like "MD"
   const getInitials = name => {
     return name
       .split(' ')
@@ -29,7 +29,6 @@ const Header = ({
 
   const renderProfileImage = () => {
     if (profileImage) {
-      // If it's a string (URI), wrap it with {uri: ...}
       const imageSource =
         typeof profileImage === 'string' ? {uri: profileImage} : profileImage;
 
@@ -46,6 +45,7 @@ const Header = ({
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
       <View style={styles.headerContainer}>
+        {/* Top Row: Profile + Bell */}
         <View style={styles.headerTop}>
           <TouchableOpacity
             onPress={() => navigation.openDrawer()}
@@ -56,17 +56,27 @@ const Header = ({
             </View>
           </TouchableOpacity>
 
-          {/* Bell Icon with Notification Badge */}
           <TouchableOpacity
             onPress={() => navigation.navigate('NotificationsScreen')}
             style={styles.bellContainer}>
             <Fontisto name="bell-alt" size={20} color="white" />
-            {/* Notification Badge */}
             {notificationCount > 0 && (
               <View style={styles.notificationBadge}>
                 <Text style={styles.notificationText}>{notificationCount}</Text>
               </View>
             )}
+          </TouchableOpacity>
+        </View>
+
+        {/* Cashback Row */}
+        <View style={styles.cashbackRow}>
+          <Text style={styles.cashbackText}>
+            {cashbackAmount} Cashback Points
+          </Text>
+          <TouchableOpacity
+            style={styles.claimButton}
+            onPress={() => navigation.navigate('CashbackScreen')}>
+            <Text style={styles.claimText}>Claim</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -79,9 +89,9 @@ const styles = StyleSheet.create({
     flex: 0,
   },
   headerContainer: {
-    flex: 1,
     backgroundColor: Colors.primary,
     padding: 15,
+    paddingBottom: 20,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },
@@ -136,6 +146,33 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 10,
     fontWeight: 'bold',
+  },
+
+  // Cashback Row Styling
+  cashbackRow: {
+    marginTop: 15,
+    backgroundColor: 'rgba(255,255,255,0.15)',
+    borderRadius: 10,
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  cashbackText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  claimButton: {
+    backgroundColor: Colors.white,
+    paddingVertical: 6,
+    paddingHorizontal: 14,
+    borderRadius: 20,
+  },
+  claimText: {
+    color: Colors.primary,
+    fontWeight: 'bold',
+    fontSize: 14,
   },
 });
 

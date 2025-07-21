@@ -39,7 +39,7 @@ const SignUpScreen = ({navigation}) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Image
-        source={require('../assets/images/ZenKlick.jpeg')} // use your logo or image here
+        source={require('../assets/images/Zc1.png')} // use your logo or image here
         style={styles.logo}
       />
 
